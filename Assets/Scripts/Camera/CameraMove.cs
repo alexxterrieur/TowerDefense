@@ -11,7 +11,6 @@ public class CameraMove : MonoBehaviour
     private bool isMoving;
 
     [SerializeField] private float movementSpeed = 10;
-    [SerializeField] private int zoomSpeed = 5;
 
     public void OnLook(InputAction.CallbackContext ctx)
     {
@@ -38,8 +37,8 @@ public class CameraMove : MonoBehaviour
         //set the limit of the camera
         if(gameObject.GetComponent<Camera>().orthographicSize <= 5)
             gameObject.GetComponent<Camera>().orthographicSize = 5;
-        else if(gameObject.GetComponent<Camera>().orthographicSize >= 25)
-            gameObject.GetComponent<Camera>().orthographicSize = 25;
+        else if(gameObject.GetComponent<Camera>().orthographicSize >= 15)
+            gameObject.GetComponent<Camera>().orthographicSize = 15;
 
     }
 
@@ -50,7 +49,6 @@ public class CameraMove : MonoBehaviour
             var position = transform.right * (delta.x * -movementSpeed);
             position += transform.up * (delta.y * -movementSpeed);
             transform.position += position * Time.deltaTime;
-
         }
     }
 }
