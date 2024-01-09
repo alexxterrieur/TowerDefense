@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Transform target;
-
+    public Transform target;
+    public int damage;
     public float speed = 70f;
     public GameObject impactEffect;
 
@@ -41,7 +41,9 @@ public class Bullet : MonoBehaviour
         //particles effect with enemy impact
         GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
-        Destroy(target.gameObject);
+       //Destroy(target.gameObject);
         Destroy(gameObject);
+        LifeManager lifeManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<LifeManager>();
+        lifeManager.TakeDamage(damage);
     }
 }
