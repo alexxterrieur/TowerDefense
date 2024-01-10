@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MapLimit
   - Building
+  - Enemy
   layers:
   - Default
   - TransparentFX

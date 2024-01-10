@@ -598,7 +598,7 @@ GameObject:
   - component: {fileID: 574836214}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1895,7 +1895,7 @@ MonoBehaviour:
         m_MethodName: DefenseSelectionButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2992605033743456879, guid: 658bd9ab417a3644ebb40c47d45a3c4a, type: 3}
+          m_ObjectArgument: {fileID: 7083146491043936596, guid: 9facd4831c0e8f542931348539ba87a4, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2170,7 +2170,7 @@ MonoBehaviour:
         m_MethodName: DefenseSelectionButton
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 5872542864659022776, guid: f8e2365d0fa801f4a8e23c82b71a64a1, type: 3}
+          m_ObjectArgument: {fileID: 7083146491043936596, guid: 7f71d10c96169c44e8d001bd76f96aaa, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
