@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TurretShoot : MonoBehaviour
 {
+
     private Transform target;
 
     [Header("Attributes")]
@@ -11,19 +12,25 @@ public class TurretShoot : MonoBehaviour
     public float range = 15f;
     public float fireRate = 1f;
     public float fireCountDown = 0f;
+    public int speedLevel = 0;
+    public int damageLevel = 0;
 
     [Header("Parameter")]
 
     public Transform rotateTurret;
     public float turnSpeed = 10f;
     public string enemyTag = "Enemy";
+    public float speed;
+    public float damage;
 
     public GameObject bulletPrefab;
     public Transform firePoint;
 
+    Bullet _bullet;
 
     private void Start()
     {
+        _bullet = GetComponent<Bullet>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -78,6 +85,7 @@ public class TurretShoot : MonoBehaviour
     {
         GameObject bulletGO  = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
+        bullet.turret = this;
 
         if(bullet != null)
         {
@@ -89,5 +97,30 @@ public class TurretShoot : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
+    }
+
+    public void UpgradeDamage()
+    {
+        
+        if(damageLevel < 5)
+        {
+            damageLevel++;
+            damage *= 1.4f;
+        }
+    }
+
+    public void UpgradeSpeed()
+    {
+        if(speedLevel < 5)
+        {
+            speedLevel++;
+            fireRate *= 1.4f;
+        }
+       
+    }
+
+    public void Deleteturret()
+    {
+        Destroy(gameObject);
     }
 }

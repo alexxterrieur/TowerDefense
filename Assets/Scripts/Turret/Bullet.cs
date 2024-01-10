@@ -6,9 +6,8 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public Transform target;
-    public int damage;
-    public float speed = 70f;
     public GameObject impactEffect;
+    public TurretShoot turret;
 
     public void Seek(Transform _target)
     {
@@ -24,7 +23,7 @@ public class Bullet : MonoBehaviour
         }
 
         Vector3 dir = target.position - transform.position;
-        float distanceThisFrame = speed * Time.deltaTime;
+        float distanceThisFrame = turret.speed * Time.deltaTime;
 
         if(dir.magnitude <= distanceThisFrame)
         {
@@ -36,14 +35,14 @@ public class Bullet : MonoBehaviour
 
     }
 
+
     void HitTarget()
     {
         //particles effect with enemy impact
         GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
-       //Destroy(target.gameObject);
         Destroy(gameObject);
         LifeManager lifeManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<LifeManager>();
-        lifeManager.TakeDamage(damage);
+        lifeManager.TakeDamage(turret.damage);
     }
 }

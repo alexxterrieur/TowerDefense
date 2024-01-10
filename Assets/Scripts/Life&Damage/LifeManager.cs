@@ -8,9 +8,9 @@ public class LifeManager : MonoBehaviour
     [SerializeField] float hp = 100f;
     public float maxHp = 100f;
 
-    public int damage;
+    public float damage;
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {
         
         hp -= _damage;
