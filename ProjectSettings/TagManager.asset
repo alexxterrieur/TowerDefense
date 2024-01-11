@@ -10,6 +10,7 @@ TagManager:
   - Turret
   - Tower
   - Spawner
+  - GoldManager
   layers:
   - Default
   - TransparentFX

@@ -2,25 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-
 public class GoldManager : MonoBehaviour
 {
-    public float moneyGang = 40f;
+    public int moneyGang;
 
     LifeManager lifeManager;
 
     private void Start()
     {
         lifeManager = GetComponent<LifeManager>();
+        moneyGang = 40;
     }
 
-    public void WinMoney()
+    public void WinMoney(int money)
     {
-        if (lifeManager.isEnemyDead == true)
-        {
-            moneyGang += 10;
-            Debug.Log(moneyGang);
-        }
+        moneyGang += money;
     }
 }

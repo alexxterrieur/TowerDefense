@@ -9,17 +9,19 @@ public class LifeManager : MonoBehaviour
     public float maxHp;
 
     EnemiesSpawner spawner;
+    GoldManager goldManager;
+    public int moneyDrop;
 
     private void Start()
     {
         spawner = GameObject.FindWithTag("Spawner").GetComponent<EnemiesSpawner>();
+        goldManager = GameObject.FindWithTag("GoldManager").GetComponent<GoldManager>();
 
         hp = maxHp;    
     }
 
     public void TakeDamage(float _damage)
     {
-
         hp -= _damage;
 
         if (hp <= 0)
@@ -32,6 +34,7 @@ public class LifeManager : MonoBehaviour
     {
         if (gameObject.tag == "Enemy")
         {
+            goldManager.WinMoney(moneyDrop);
             spawner.enemiesAlive.Remove(gameObject);
             gameObject.SetActive(false);
         }
