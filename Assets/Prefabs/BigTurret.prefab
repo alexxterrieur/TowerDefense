@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 150
   maxHp: 15
+  turretUI: {fileID: 0}
 --- !u!1 &7083146491897426708
 GameObject:
   m_ObjectHideFlags: 0

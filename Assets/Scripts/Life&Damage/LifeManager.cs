@@ -8,13 +8,17 @@ public class LifeManager : MonoBehaviour
     [SerializeField] int hp;
     public int maxHp;
 
+
+    public float damage;
+        
     private void Start()
     {
         hp = maxHp;    
     }
 
-    public void TakeDamage(int _damage)
+    public void TakeDamage(float _damage)
     {        
+
         hp -= _damage;
 
         if(hp <= 0)
