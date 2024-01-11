@@ -110,9 +110,10 @@ GameObject:
   - component: {fileID: 7083146491043936593}
   - component: {fileID: 7083146491043936598}
   - component: {fileID: 7083146491043936599}
+  - component: {fileID: -6493036620268543658}
   m_Layer: 0
   m_Name: BigTurret
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +219,20 @@ MonoBehaviour:
   enemyTag: Enemy
   bulletPrefab: {fileID: 8350034157936021707, guid: 1ee66a8bd2931834f91c812bdba2146a, type: 3}
   firePoint: {fileID: 7083146492416952182}
+--- !u!114 &-6493036620268543658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7083146491043936596}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cec514f879b9fd044a37baa5ed2a8dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 150
+  maxHp: 15
 --- !u!1 &7083146491897426708
 GameObject:
   m_ObjectHideFlags: 0

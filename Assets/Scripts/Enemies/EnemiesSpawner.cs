@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemiesSpawner : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> enemiesSpawners;
     [SerializeField] private List<GameObject> enemyPrefabs;
     public Vector3 center;
     public Vector3 spawnSize;
