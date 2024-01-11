@@ -28,6 +28,9 @@ public class TurretShoot : MonoBehaviour
 
     Bullet _bullet;
 
+    GameObject bulletGO;
+    public bool shootBigBullets;
+
     private void Start()
     {
         _bullet = GetComponent<Bullet>();
@@ -83,7 +86,20 @@ public class TurretShoot : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bulletGO  = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        //GameObject bulletGO  = (GameObject) Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        //pooling
+        if(shootBigBullets)
+        {
+            bulletGO = Pooling.poolingInstance.GetBigBullets();
+        }
+        else
+        {
+            bulletGO = Pooling.poolingInstance.GetBullets();
+        }
+        
+        bulletGO.transform.position = transform.position;
+        bulletGO.SetActive(true);
+
         Bullet bullet = bulletGO.GetComponent<Bullet>();
         bullet.turret = this;
 
@@ -122,5 +138,11 @@ public class TurretShoot : MonoBehaviour
     public void Deleteturret()
     {
         Destroy(gameObject);
+    }
+
+    public IEnumerator DisableEffect(GameObject _effect)
+    {
+        yield return new WaitForSeconds(2f);
+        _effect.SetActive(false);
     }
 }

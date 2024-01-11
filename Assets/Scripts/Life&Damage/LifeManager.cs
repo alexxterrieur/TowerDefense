@@ -8,8 +8,11 @@ public class LifeManager : MonoBehaviour
     [SerializeField] float hp;
     public float maxHp;
         
+    EnemiesSpawner spawner;
+
     private void Start()
     {
+        spawner = GameObject.FindWithTag("Spawner").GetComponent<EnemiesSpawner>();
         hp = maxHp;    
     }
 
@@ -28,6 +31,7 @@ public class LifeManager : MonoBehaviour
     {
         if(gameObject.tag == "Enemy")
         {
+            spawner.enemiesAlive.Remove(gameObject);
             gameObject.SetActive(false);
         }
 

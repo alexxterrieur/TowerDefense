@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Turret
   - Tower
+  - Spawner
   layers:
   - Default
   - TransparentFX

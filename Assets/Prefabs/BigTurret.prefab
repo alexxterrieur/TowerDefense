@@ -223,6 +223,7 @@ MonoBehaviour:
   damage: 25
   bulletPrefab: {fileID: 8350034157936021707, guid: 1ee66a8bd2931834f91c812bdba2146a, type: 3}
   firePoint: {fileID: 7083146492416952182}
+  shootBigBullets: 1
 --- !u!114 &-6493036620268543658
 MonoBehaviour:
   m_ObjectHideFlags: 0
