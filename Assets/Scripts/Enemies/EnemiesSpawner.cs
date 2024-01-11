@@ -46,7 +46,6 @@ public class EnemiesSpawner : MonoBehaviour
     //    enemiesAlive.Add(enemy);
     //    enemy.transform.position = center + new Vector3(Random.Range(-spawnSize.x / 2, spawnSize.x / 2), Random.Range(-spawnSize.y / 2, spawnSize.y / 2), Random.Range(-spawnSize.z / 2, spawnSize.z / 2));
     //}
-
     void SpawnEnemy(GameObject enemyPrefab)
     {
         GameObject enemy = Instantiate(enemyPrefab);

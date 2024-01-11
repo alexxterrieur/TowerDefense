@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TurretUI : MonoBehaviour
@@ -9,6 +10,8 @@ public class TurretUI : MonoBehaviour
     public Slider sliderSpeed;
     public Slider sliderDamage;
 
+    public bool canOpenTurretUI = false;
+
     private void Start()
     {
         turretUI.SetActive(false);
@@ -18,7 +21,14 @@ public class TurretUI : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+
+
+
+    }
+
+    public void OpenTurretUI(InputAction.CallbackContext ctx)
+    {
+        if (ctx.performed)
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -28,17 +38,16 @@ public class TurretUI : MonoBehaviour
                 Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
                 selectedTurret = hit.collider.gameObject;
                 turretUI.SetActive(true);
+                canOpenTurretUI = true;
                 UpdateVisualStat();
-                
+
             }
-/*            else
+            else
             {
-                turretUI.SetActive(false);
-            }*/
+                canOpenTurretUI = false;
+            }
 
         }
-
-
     }
 
     private void UpdateVisualStat()
