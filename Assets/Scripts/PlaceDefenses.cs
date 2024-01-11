@@ -50,7 +50,7 @@ public class PlaceDefenses : MonoBehaviour
             if(inMapLLimit && noObstacles)
             {
                 Instantiate(selectedDefense, new Vector3(mousePos.x, 1, mousePos.z), Quaternion.identity);
-                    
+                selectedDefense = null;    
             }
         }
     }

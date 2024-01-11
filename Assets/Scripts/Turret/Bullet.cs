@@ -41,7 +41,7 @@ public class Bullet : MonoBehaviour
         //particles effect with enemy impact
         GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
         LifeManager lifeManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<LifeManager>();
         lifeManager.TakeDamage(turret.damage);
     }
