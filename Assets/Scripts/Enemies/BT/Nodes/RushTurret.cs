@@ -5,18 +5,18 @@ using UnityEngine.AI;
 
 public class RushTurret : Node
 {
-    private GameObject _turret;
     private NavMeshAgent _agent;
+    private EnemyAI _enemyAI;
 
-    public RushTurret(GameObject turret, NavMeshAgent agent)
+    public RushTurret(NavMeshAgent agent, EnemyAI enemyAI)
     {
-        _turret = turret;
         _agent = agent;
+        _enemyAI = enemyAI;
     }
 
     public override NodeState Evaluate()
     {
-        _agent.SetDestination(_turret.transform.position);
+        _agent.SetDestination(_enemyAI.nearestTurret.transform.position);
 
         _nodeState = NodeState.SUCCESS;
         return _nodeState;

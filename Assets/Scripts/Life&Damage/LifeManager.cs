@@ -5,15 +5,22 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour
 {
     //hp
-    [SerializeField] float hp = 100f;
-    public float maxHp = 100f;
+    [SerializeField] int hp;
+    public int maxHp;
+
 
     public float damage;
+        
+    private void Start()
+    {
+        hp = maxHp;    
+    }
 
     public void TakeDamage(float _damage)
-    {
-        
+    {        
+
         hp -= _damage;
+
         if(hp <= 0)
         {
             Death();
@@ -22,7 +29,17 @@ public class LifeManager : MonoBehaviour
 
     void Death()
     {
-        Destroy(gameObject);
+        if(gameObject.tag == "Enemy")
+        {
+            gameObject.SetActive(false);
+        }
+
+        if(gameObject.tag == "Turret")
+        {           
+            Destroy(gameObject);
+            
+        }
+        
     }
 
 }

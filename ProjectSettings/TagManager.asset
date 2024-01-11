@@ -7,6 +7,8 @@ TagManager:
   - MapLimit
   - Building
   - Enemy
+  - Turret
+  - Tower
   layers:
   - Default
   - TransparentFX
