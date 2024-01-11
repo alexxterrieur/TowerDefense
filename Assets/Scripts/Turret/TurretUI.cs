@@ -62,4 +62,8 @@ public class TurretUI : MonoBehaviour
         selectedTurret.GetComponent<TurretShoot>().Deleteturret();
     }
     
+    public void CloseWindow()
+    {
+        turretUI.SetActive(false);
+    }
 }

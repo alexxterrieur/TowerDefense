@@ -5,11 +5,8 @@ using UnityEngine;
 public class LifeManager : MonoBehaviour
 {
     //hp
-    [SerializeField] int hp;
-    public int maxHp;
-
-
-    public float damage;
+    [SerializeField] float hp;
+    public float maxHp;
         
     private void Start()
     {

@@ -213,10 +213,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   range: 15
   fireRate: 3
-  fireCountDown: 0
+  fireCountDown: 1
+  speedLevel: 1
+  damageLevel: 1
   rotateTurret: {fileID: 7083146491043936595}
   turnSpeed: 10
   enemyTag: Enemy
+  speed: 20
+  damage: 25
   bulletPrefab: {fileID: 8350034157936021707, guid: 30c92345d0b208c4d94ad3254dddd432, type: 3}
   firePoint: {fileID: 7083146492416952182}
 --- !u!114 &-8108539171261367616

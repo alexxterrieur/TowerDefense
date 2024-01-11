@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlaceDefenses : MonoBehaviour
 {
-    private GameObject selectedDefense;
+    public GameObject selectedDefense;
     Vector3 mousePos;
     bool inMapLLimit;
     bool noObstacles;
