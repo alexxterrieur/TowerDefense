@@ -7,14 +7,14 @@ public class LifeManager : MonoBehaviour
     //hp
     [SerializeField] float hp;
     public float maxHp;
-    public bool isEnemyDead = false;
 
     EnemiesSpawner spawner;
 
     private void Start()
     {
         spawner = GameObject.FindWithTag("Spawner").GetComponent<EnemiesSpawner>();
-        hp = maxHp;
+
+        hp = maxHp;    
     }
 
     public void TakeDamage(float _damage)
@@ -34,7 +34,6 @@ public class LifeManager : MonoBehaviour
         {
             spawner.enemiesAlive.Remove(gameObject);
             gameObject.SetActive(false);
-            isEnemyDead = true;
         }
 
         if (gameObject.tag == "Turret")
