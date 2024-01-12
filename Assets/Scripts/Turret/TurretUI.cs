@@ -10,8 +10,7 @@ public class TurretUI : MonoBehaviour
     public Slider sliderSpeed;
     public Slider sliderDamage;
 
-
-    public bool canOpenTurretUI = false;
+    [SerializeField]private EnemiesSpawner spawner;
 
     private void Start()
     {
@@ -23,23 +22,20 @@ public class TurretUI : MonoBehaviour
     {
         if (ctx.performed)
         {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Turret"))
+            if(spawner.enemiesAlive.Count <= 0)
             {
-                Debug.Log("You selected the " + hit.transform.name); // ensure you picked right object
-                selectedTurret = hit.collider.gameObject;
-                turretUI.SetActive(true);
-                canOpenTurretUI = true;
-                UpdateVisualStat();
 
-            }
-            else
-            {
-                //canOpenTurretUI = false;
-            }
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
+                if (Physics.Raycast(ray, out hit) && hit.collider.CompareTag("Turret"))
+                {
+                    selectedTurret = hit.collider.gameObject;
+                    turretUI.SetActive(true);
+                    UpdateVisualStat();
+
+                }
+            }
         }
     }
 
@@ -53,11 +49,15 @@ public class TurretUI : MonoBehaviour
     {
         selectedTurret.GetComponent<TurretShoot>().UpgradeSpeed();
         UpdateVisualStat();
+
+
     }
     public void IncreaseDamage()
     {
+
         selectedTurret.GetComponent<TurretShoot>().UpgradeDamage();
         UpdateVisualStat();
+
     }
     public void DeleteTurret()
     {

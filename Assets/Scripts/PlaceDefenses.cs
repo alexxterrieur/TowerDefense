@@ -8,6 +8,8 @@ public class PlaceDefenses : MonoBehaviour
     bool inMapLLimit;
     bool noObstacles;
 
+    public int turretCost;
+
     TurretUI turretUI;
     GoldManager goldManager;
 
@@ -56,11 +58,11 @@ public class PlaceDefenses : MonoBehaviour
             }
 
             //if we try to build in the mapLimit and there is no obstacles, Instanciate the prefab
-            if(inMapLLimit && noObstacles)
+            if(inMapLLimit && noObstacles && goldManager.moneyGang >= turretCost)
             {
                 Instantiate(selectedDefense, new Vector3(mousePos.x, 1, mousePos.z), Quaternion.identity);
                 selectedDefense = null;
-                goldManager.moneyGang -= 15;
+                goldManager.LooseMoney(turretCost);
             }
         }
     }
