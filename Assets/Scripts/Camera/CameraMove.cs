@@ -25,30 +25,33 @@ public class CameraMove : MonoBehaviour
     public void OnZoom(InputAction.CallbackContext ctx)
     {
         zoom = ctx.ReadValue<float>();
-        if(zoom > 0)
+        if (zoom > 0)
         {
-            gameObject.GetComponent<Camera>().orthographicSize -= 1;
+            cam.orthographicSize -= 1;
         }
-        else if(zoom < 0)
+        else if (zoom < 0)
         {
-            gameObject.GetComponent<Camera>().orthographicSize += 1;
+            cam.orthographicSize += 1;
         }
 
-        //set the limit of the camera
-        if(gameObject.GetComponent<Camera>().orthographicSize <= 5)
-            gameObject.GetComponent<Camera>().orthographicSize = 5;
-        else if(gameObject.GetComponent<Camera>().orthographicSize >= 15)
-            gameObject.GetComponent<Camera>().orthographicSize = 15;
-
+        //limit of the camera zoom
+        cam.orthographicSize = Mathf.Clamp(cam.orthographicSize, 5, 25);
     }
 
     private void LateUpdate()
     {
-        if(isMoving)
+        if (isMoving)
         {
             var position = transform.right * (delta.x * -movementSpeed);
             position += transform.up * (delta.y * -movementSpeed);
-            transform.position += position * Time.deltaTime;
+            Vector3 newPosition = transform.position + position * Time.deltaTime;
+
+            //limit the camera position
+            newPosition.x = Mathf.Clamp(newPosition.x, -50f, 4f);
+            newPosition.y = Mathf.Clamp(newPosition.y, 12f, 25f);
+            newPosition.z = Mathf.Clamp(newPosition.z, -50f, 8f);
+            transform.position = newPosition;
         }
     }
+
 }
