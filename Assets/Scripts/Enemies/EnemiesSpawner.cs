@@ -27,7 +27,7 @@ public class EnemiesSpawner : MonoBehaviour
     public void SpawnWave()
     {
         List<GameObject> selectedEnemies = new List<GameObject>();
-        List<GameObject> selectedSpawner = new List<GameObject>();
+        
         for (int i = 0; i < enemiesNumber; i++)
         {
             //random enemy prefab
