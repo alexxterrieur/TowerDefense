@@ -44,6 +44,10 @@ public class LifeManager : MonoBehaviour
             Destroy(gameObject);
 
         }
+        if(gameObject.tag == "Tower")
+        {
+            //Afficher menu défatie
+        }
 
     }
 

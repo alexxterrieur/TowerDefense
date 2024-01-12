@@ -111,6 +111,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  damage: 25
-  speed: 70
   impactEffect: {fileID: 6596844728920722503, guid: 4ee53caa95976704795dd6a5004893c3, type: 3}
+  turret: {fileID: 0}

@@ -9,6 +9,10 @@ public class Bullet : MonoBehaviour
     public GameObject impactEffect;
     public TurretShoot turret;
 
+    LifeManager lifeManager;
+
+
+
     public void Seek(Transform _target)
     {
         target = _target;
@@ -27,7 +31,7 @@ public class Bullet : MonoBehaviour
 
         if(dir.magnitude <= distanceThisFrame)
         {
-            HitTarget();
+            gameObject.SetActive(false);
             return;
         }
 
@@ -36,13 +40,16 @@ public class Bullet : MonoBehaviour
     }
 
 
-    void HitTarget()
+    private void OnCollisionEnter(Collision collision)
     {
-        //particles effect with enemy impact
-        GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
-        gameObject.SetActive(false);
-        LifeManager lifeManager = GameObject.FindGameObjectWithTag("Enemy").GetComponent<LifeManager>();
-        lifeManager.TakeDamage(turret.damage);
+        if(collision != null && collision.gameObject.tag == "Enemy")
+        {
+            //particles effect with enemy impact
+            GameObject effectIns = Instantiate(impactEffect, transform.position, transform.rotation);
+            Destroy(effectIns, 2f);
+            //gameObject.SetActive(false);
+            lifeManager = collision.gameObject.GetComponent<LifeManager>();
+            lifeManager.TakeDamage(turret.damage);
+        }
     }
 }
