@@ -9,10 +9,12 @@ public class PlaceDefenses : MonoBehaviour
     bool noObstacles;
 
     TurretUI turretUI;
+    GoldManager goldManager;
 
     private void Start()
     {
         turretUI = GetComponent<TurretUI>();
+        goldManager = GameObject.FindWithTag("GoldManager").GetComponent<GoldManager>();
     }
 
     public void DefenseSelectionButton(GameObject defense)
@@ -58,7 +60,7 @@ public class PlaceDefenses : MonoBehaviour
             {
                 Instantiate(selectedDefense, new Vector3(mousePos.x, 1, mousePos.z), Quaternion.identity);
                 selectedDefense = null;
-
+                goldManager.moneyGang -= 15;
             }
         }
     }

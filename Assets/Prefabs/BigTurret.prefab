@@ -218,9 +218,10 @@ MonoBehaviour:
   damageLevel: 1
   rotateTurret: {fileID: 7083146491043936595}
   turnSpeed: 10
-  enemyTag: Enemy
   speed: 20
   damage: 25
+  moneyDropTurret: 0
+  enemyTag: Enemy
   bulletPrefab: {fileID: 8350034157936021707, guid: 1ee66a8bd2931834f91c812bdba2146a, type: 3}
   firePoint: {fileID: 7083146492416952182}
   shootBigBullets: 1
@@ -238,6 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 150
   maxHp: 150
+  moneyDrop: 10
 --- !u!1 &7083146491897426708
 GameObject:
   m_ObjectHideFlags: 0
