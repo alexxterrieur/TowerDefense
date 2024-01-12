@@ -19,14 +19,16 @@ public class TurretShoot : MonoBehaviour
 
     public Transform rotateTurret;
     public float turnSpeed = 10f;
-    public string enemyTag = "Enemy";
     public float speed;
     public float damage;
+    public int moneyDropTurret;
+    public string enemyTag = "Enemy";
 
     public GameObject bulletPrefab;
     public Transform firePoint;
 
     Bullet _bullet;
+    GoldManager goldManager;
 
     GameObject bulletGO;
     public bool shootBigBullets;
@@ -34,6 +36,7 @@ public class TurretShoot : MonoBehaviour
     private void Start()
     {
         _bullet = GetComponent<Bullet>();
+        goldManager = GameObject.FindWithTag("GoldManager").GetComponent<GoldManager>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -117,26 +120,33 @@ public class TurretShoot : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        
-        if(damageLevel < 5)
+        if(goldManager.moneyGang > 20)
         {
-            damageLevel++;
-            damage *= 1.4f;
+            if(damageLevel < 5)
+            {
+                damageLevel++;
+                damage *= 1.4f;
+            }
         }
+        
+
     }
 
     public void UpgradeSpeed()
     {
-        if(speedLevel < 5)
+        if(goldManager.moneyGang > 20)
         {
-            speedLevel++;
-            fireRate *= 1.4f;
-        }
-       
+            if(speedLevel < 5)
+            {
+                speedLevel++;
+                fireRate *= 1.4f;
+            }
+        }   
     }
 
     public void Deleteturret()
     {
+        goldManager.WinMoney(moneyDropTurret);
         Destroy(gameObject);
     }
 

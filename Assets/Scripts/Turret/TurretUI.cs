@@ -10,6 +10,7 @@ public class TurretUI : MonoBehaviour
     public Slider sliderSpeed;
     public Slider sliderDamage;
 
+
     public bool canOpenTurretUI = false;
 
     private void Start()
@@ -17,14 +18,6 @@ public class TurretUI : MonoBehaviour
         turretUI.SetActive(false);
     }
 
-
-
-    private void Update()
-    {
-
-
-
-    }
 
     public void OpenTurretUI(InputAction.CallbackContext ctx)
     {
@@ -44,7 +37,7 @@ public class TurretUI : MonoBehaviour
             }
             else
             {
-                canOpenTurretUI = false;
+                //canOpenTurretUI = false;
             }
 
         }
