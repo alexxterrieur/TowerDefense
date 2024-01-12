@@ -216,11 +216,13 @@ MonoBehaviour:
   fireCountDown: 1
   speedLevel: 1
   damageLevel: 1
+  upgradeSpeedCost: 15
+  upgradeDamageCost: 15
   rotateTurret: {fileID: 7083146491043936595}
   turnSpeed: 10
   speed: 20
   damage: 25
-  moneyDropTurret: 0
+  moneyDropTurret: 10
   enemyTag: Enemy
   bulletPrefab: {fileID: 8350034157936021707, guid: 30c92345d0b208c4d94ad3254dddd432, type: 3}
   firePoint: {fileID: 7083146492416952182}

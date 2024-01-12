@@ -8,24 +8,37 @@ public class GoldManager : MonoBehaviour
 {
     public int moneyGang;
     public TMP_Text currentMoney;
-
-    LifeManager lifeManager;
+    public TMP_Text winMoney;
 
     private void Start()
     {
         Text currentMoney = GetComponent<Text>();
-
-        lifeManager = GetComponent<LifeManager>();
-        moneyGang = 40;
     }
 
     private void Update()
     {
         currentMoney.text = "Current Money :" + moneyGang;
+
     }
 
     public void WinMoney(int money)
     {
         moneyGang += money;
+    }
+
+    public void LooseMoney(int money)
+    {
+        moneyGang -= money;
+    }
+
+    public IEnumerator PrintMoney(GameObject ennemy)
+    {
+        Vector3 newPos = new Vector3(0, 2, 0);
+        winMoney.gameObject.transform.position = Camera.main.WorldToScreenPoint(ennemy.transform.position + newPos);
+        winMoney.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.8f);
+         Debug.Log("anoze");
+        winMoney.gameObject.SetActive(false);
+        
     }
 }

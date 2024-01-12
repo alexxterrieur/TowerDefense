@@ -14,6 +14,8 @@ public class TurretShoot : MonoBehaviour
     public float fireCountDown = 0f;
     public int speedLevel = 0;
     public int damageLevel = 0;
+    public int upgradeSpeedCost;
+    public int upgradeDamageCost;
 
     [Header("Parameter")]
 
@@ -120,13 +122,16 @@ public class TurretShoot : MonoBehaviour
 
     public void UpgradeDamage()
     {
-        if(goldManager.moneyGang > 20)
+        if(goldManager.moneyGang >= upgradeDamageCost)
         {
             if(damageLevel < 5)
             {
                 damageLevel++;
                 damage *= 1.4f;
+
             }
+            goldManager.LooseMoney(upgradeDamageCost);
+            upgradeDamageCost *= 2;
         }
         
 
@@ -134,13 +139,15 @@ public class TurretShoot : MonoBehaviour
 
     public void UpgradeSpeed()
     {
-        if(goldManager.moneyGang > 20)
+        if(goldManager.moneyGang >= upgradeSpeedCost)
         {
             if(speedLevel < 5)
             {
                 speedLevel++;
                 fireRate *= 1.4f;
             }
+            goldManager.LooseMoney(upgradeSpeedCost);
+            upgradeSpeedCost *= 2;
         }   
     }
 
