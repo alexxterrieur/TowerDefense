@@ -14,6 +14,7 @@ public class Ultimate : MonoBehaviour
     public float ultiTime = 25f;
     public bool canActiveUlti;
     [SerializeField] private GameObject ultiButton;
+    [SerializeField] private Image fillTimer;
 
     public void ActiveUltimate()
     {
@@ -25,10 +26,16 @@ public class Ultimate : MonoBehaviour
         {
             //get half of the enemies alive and kill them + reset ultiTime
             enemiesToKill = spawner.enemiesAlive.Count / 2;
+            if(spawner.enemiesAlive.Count == 1)
+            {
+                enemiesToKill = 1;
+            }
+
             for(int i = 0; i < enemiesToKill; i++)
             {
                 enemy = GameObject.FindGameObjectWithTag("Enemy");
                 enemy.GetComponent<LifeManager>().TakeDamage(1000);
+                StartCoroutine(ActiveLightning(enemy));
 
                 ultiTime = resetUltiTime;
             }
@@ -61,5 +68,16 @@ public class Ultimate : MonoBehaviour
         {
             ultiButton.GetComponent<Button>().interactable = false;
         }
+
+        fillTimer.fillAmount = Mathf.InverseLerp(0, resetUltiTime, ultiTime);
+    }
+
+    IEnumerator ActiveLightning(GameObject enemy)
+    {
+        Quaternion rotation = Quaternion.Euler(90f, 0f, 0f);
+        Vector3 newPos = new Vector3(0, 8, 0);
+        GameObject newLightning = Instantiate(lightning, enemy.transform.position + newPos, rotation);
+        yield return new WaitForSeconds(0.4f);
+        Destroy(newLightning);
     }
 }
