@@ -7,16 +7,16 @@ public class LifeManager : MonoBehaviour
     //hp
     [SerializeField] float hp;
     public float maxHp;
+    public int moneyDrop;
+    public GameObject loose;
 
     EnemiesSpawner spawner;
     GoldManager goldManager;
-    public int moneyDrop;
 
     private void Start()
     {
         spawner = GameObject.FindWithTag("Spawner").GetComponent<EnemiesSpawner>();
         goldManager = GameObject.FindWithTag("GoldManager").GetComponent<GoldManager>();
-
         hp = maxHp;    
     }
 
@@ -48,6 +48,7 @@ public class LifeManager : MonoBehaviour
         if(gameObject.tag == "Tower")
         {
             //Afficher menu défatie
+            loose.SetActive(true);
         }
 
     }
