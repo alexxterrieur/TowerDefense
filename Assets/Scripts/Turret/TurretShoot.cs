@@ -133,8 +133,10 @@ public class TurretShoot : MonoBehaviour
             goldManager.LooseMoney(upgradeDamageCost);
             upgradeDamageCost *= 2;
         }
-        
-
+        else
+        {
+            StartCoroutine(goldManager.NotEnoughMoney());
+        }
     }
 
     public void UpgradeSpeed()
@@ -148,7 +150,11 @@ public class TurretShoot : MonoBehaviour
             }
             goldManager.LooseMoney(upgradeSpeedCost);
             upgradeSpeedCost *= 2;
-        }   
+        } 
+        else
+        {
+            StartCoroutine(goldManager.NotEnoughMoney());
+        }
     }
 
     public void Deleteturret()

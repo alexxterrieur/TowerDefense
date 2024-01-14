@@ -9,6 +9,7 @@ public class GoldManager : MonoBehaviour
     public int moneyGang;
     public TMP_Text currentMoney;
     public TMP_Text winMoney;
+    public TMP_Text notEnoughMoneyText;
 
     private void Start()
     {
@@ -31,14 +32,19 @@ public class GoldManager : MonoBehaviour
         moneyGang -= money;
     }
 
-    public IEnumerator PrintMoney(GameObject ennemy)
+    public IEnumerator NotEnoughMoney()
     {
-        Vector3 newPos = new Vector3(0, 2, 0);
-        winMoney.gameObject.transform.position = Camera.main.WorldToScreenPoint(ennemy.transform.position + newPos);
-        winMoney.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.8f);
-         Debug.Log("anoze");
-        winMoney.gameObject.SetActive(false);
-        
+        notEnoughMoneyText.gameObject.SetActive(true);
+        yield return new WaitForSeconds(1.0f);
+        notEnoughMoneyText.gameObject.SetActive(false);
     }
+
+    //public IEnumerator PrintMoney(GameObject ennemy)
+    //{
+    //    Vector3 newPos = new Vector3(0, 2, 0);
+    //    winMoney.gameObject.transform.position = Camera.main.WorldToScreenPoint(ennemy.transform.position + newPos);
+    //    winMoney.gameObject.SetActive(true);
+    //    yield return new WaitForSeconds(0.8f);
+    //    winMoney.gameObject.SetActive(false);        
+    //}
 }

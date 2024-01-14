@@ -1,5 +1,7 @@
 using UnityEngine.InputSystem;
 using UnityEngine;
+using System.Collections;
+using TMPro;
 
 public class PlaceDefenses : MonoBehaviour
 {
@@ -10,12 +12,11 @@ public class PlaceDefenses : MonoBehaviour
 
     public int turretCost;
 
-    TurretUI turretUI;
     GoldManager goldManager;
+
 
     private void Start()
     {
-        turretUI = GetComponent<TurretUI>();
         goldManager = GameObject.FindWithTag("GoldManager").GetComponent<GoldManager>();
     }
 
@@ -58,12 +59,21 @@ public class PlaceDefenses : MonoBehaviour
             }
 
             //if we try to build in the mapLimit and there is no obstacles, Instanciate the prefab
-            if(inMapLLimit && noObstacles && goldManager.moneyGang >= turretCost)
+            if(inMapLLimit && noObstacles)
             {
-                Instantiate(selectedDefense, new Vector3(mousePos.x, 1, mousePos.z), Quaternion.identity);
-                selectedDefense = null;
-                goldManager.LooseMoney(turretCost);
+                if(goldManager.moneyGang >= turretCost)
+                {
+                    Instantiate(selectedDefense, new Vector3(mousePos.x, 1, mousePos.z), Quaternion.identity);
+                    selectedDefense = null;
+                    goldManager.LooseMoney(turretCost);
+                }
+                else
+                {
+                    StartCoroutine(goldManager.NotEnoughMoney());
+                }
             }
         }
     }
+
+    
 }

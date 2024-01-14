@@ -35,7 +35,7 @@ public class LifeManager : MonoBehaviour
         if (gameObject.tag == "Enemy")
         {
             goldManager.WinMoney(moneyDrop);
-            StartCoroutine(goldManager.PrintMoney(gameObject));
+            //StartCoroutine(goldManager.PrintMoney(gameObject));
             spawner.enemiesAlive.Remove(gameObject);
             gameObject.SetActive(false);
         }

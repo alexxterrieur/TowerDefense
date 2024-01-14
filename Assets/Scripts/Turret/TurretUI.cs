@@ -24,7 +24,6 @@ public class TurretUI : MonoBehaviour
         {
             if(spawner.enemiesAlive.Count <= 0)
             {
-
                 RaycastHit hit;
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
